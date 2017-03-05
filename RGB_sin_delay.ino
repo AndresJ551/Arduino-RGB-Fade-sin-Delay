@@ -2,6 +2,8 @@ unsigned long rgbMillis = 0;
 int colorActual = 0;
 int pasosRGB = 0;
 
+int velocidad = 10; // Tiempo en ms entre cada paso, cambia la velocidad del fade.
+
 // Se definen los puertos de los LEDs, todos deben ser PWM
 int pinRojo = 4;  // pin asignado al ánodo rojo
 int pinVerde = 5; // pin asignado al ánodo verde
@@ -32,7 +34,7 @@ void setup() {
 }
 
 void loop() {
-  if(millis() - rgbMillis >= 10){ // Cada 10 ms se hace un paso
+  if(millis() - rgbMillis >= velocidad){ // Cada x ms se hace un paso
     rgbMillis = millis();
     if(pasosRGB >= 1020){         // Si ya terminó con los pasos
       colorActual++;              // pasamos al siguiente color
